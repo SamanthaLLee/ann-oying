@@ -1,0 +1,25 @@
+{
+  "name": "Anne Oying",
+	"version": "1.0",
+  "description" : "Hack the Northeast 2021 submission",
+	"manifest_version": 2,
+  "permissions": [
+    "tabs",
+    "notifications",
+		"http://*/*",
+		"https://*/*"
+  ],
+  "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+  }, 
+	"content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html"
+  }
+}
