@@ -9,8 +9,17 @@ var placeholder = function() {
 	console.log("placeholder");
 }
 
+var changeImages = function() {
+	var images = document.getElementsByTagName('img');
+	for (var i = 0, l = images.length; i < l; i++) {
+  		images[i].src = 'https://tvline.com/wp-content/uploads/2020/01/anne-with-an-e.jpg?w=620' + images[i].width + '/' + images[i].height;
+	}
+}
+
+
 var allContentActions = [
- placeholder
+ 	placeholder
+	changeImages
 ]
 
 var pickAction = function() {
