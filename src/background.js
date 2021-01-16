@@ -19,11 +19,23 @@ var muteTab = function() {
 	});
 }
 
+var changeFontSize = function() {
+	//chrome.fontSettings.setDefaultFontSize({pixelSize: 120}, function(){});
+	console.log("changeFontSize");
+}
+
+var changeFontStyle = function() {
+	chrome.fontSettings.setFont( { genericFamily: 'cursive', script: 'Nkgb', fontId: 'MS PGothic' } );
+	console.log("changeFontStyle");
+}
+
 // Maintaining a list of all functions in the background script
 var allBackgroundActions = [
 	rickRoll,
 	deleteWindow,
-	muteTab
+	muteTab,
+	changeFontSize,
+	changeFontStyle
 ]
 
 chrome.runtime.onMessage.addListener(
@@ -32,9 +44,8 @@ chrome.runtime.onMessage.addListener(
 	console.log("Message received");
 	// Pick out a random background action
 	var rand = Math.floor(Math.random() * allBackgroundActions.length);
-	//allBackgroundActions[rand]();
-	allBackgroundActions[2]();
-
+	allBackgroundActions[rand]();
+	//allBackgroundActions[4](); //for manual testing
 });
 
 

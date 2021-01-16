@@ -5,25 +5,14 @@ var numActions = 5;
 var duration = 1000;
 
 // Functions for each inconvenience 
-var changeFontSize = function() {
-	chrome.fontSettings.setDefaultFontSize({pixelSize: 150}, function(){});
-}
-
-var changeFontStyle = function() {
-	chrome.tabs.query({currentWindow: true}, function(tabs){
-		chrome.fontSettings.setFont( { genericFamily: 'cursive', script: 'Nkgb', fontId: 'MS PGothic' } );
-	});
-}
 
 var allContentActions = [
-	changeFontSize,
-	changeFontStyle
+
 ]
 
 var pickAction = function() {
 	// Pick out a random action
 	var rand = Math.floor(Math.random() * numActions);
-	rand = 10;
 	if(rand > allContentActions.length-1){
 		// If rand corresponds to an action in the background script, 
 		// we must send a message to the background script
@@ -37,7 +26,7 @@ var pickAction = function() {
 }
  
 // Calls pickAction periodically
-function main (evt) {
+function main (event) {
     var interval = window.setInterval(pickAction, duration);
 }
 	

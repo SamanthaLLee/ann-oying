@@ -4,7 +4,6 @@
   "description" : "Hack the Northeast 2021 submission",
 	"manifest_version": 2,
   "permissions": [
-		"alarms",
 		"fontSettings",
     "tabs",
     "notifications",
