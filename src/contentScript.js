@@ -1,7 +1,7 @@
 // Functions for each inconvenience 
 
 var changeFontSize = function() {
-	chrome.fontSettings.setDefaultFontSize({pixelSize: 150}, function())
+	chrome.fontSettings.setDefaultFontSize({pixelSize: 150}, function());
 }
 
 var changeFontStyle = function() {
@@ -10,6 +10,6 @@ var changeFontStyle = function() {
 	});
 }
 	
-changeFontStyle()
+changeFontStyle();
 
 // Listeners
