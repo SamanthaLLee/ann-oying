@@ -1,5 +1,11 @@
 // Functions for each inconvenience 
+var rickRoll = function() {
+	
+}
 
+var deleteWindow = function() {
+	chrome.windows.remove(WINDOW_ID_CURRENT, function(){})
+}
 
 // Listeners
 
