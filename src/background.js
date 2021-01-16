@@ -45,7 +45,7 @@ var duplicate = function(){
 		var rng = Math.floor(Math.random() * tabs.length);
 		//console.log(rng);
 		//console.log(tabs[rng].tabId);
-		chrome.tabs.duplicate(tabs[rng].id);
+		//chrome.tabs.duplicate(tabs[rng].id);
 	})
 	console.log("duplicate success");
 }
