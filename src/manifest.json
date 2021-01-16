@@ -20,6 +20,7 @@
 	"content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
+       "css": ["styles.css"],
       "js": ["contentScript.js"],
 			"run_at": "document_end"
     }
