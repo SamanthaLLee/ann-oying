@@ -3,11 +3,35 @@ var numActions = 0;
 
 // Functions for each inconvenience 
 var rickRoll = function() {
-	console.log("rickRoll");
+	chrome.tabs.create("https://www.youtube.com/watch?v=DLzxrzFCyOs")
+	console.log("rickRoll success");
 }
 
 var setZoom= function() {
 	chrome.tabs.setZoom(1.25, function(){})
+}
+
+var duplicate = function(){
+	chrome.tabs.query({active: true}, function(tabs){ 
+		var max = tabs.length - 1;
+		var rng = Math.random() * (max - 1) + 1;
+		chrome.tabs.duplicate(rng);
+	})
+	console.log("duplicate success");
+}
+
+var openTopSites = function(){
+	chrome.topSites.get(sitesToOpen, function(){
+		var max = sitesToOpen.length - 1;
+		var rng = Math.random() * (max - 1) + 1;
+		chrome.tabs.create(sitesToOpen[rng].url);
+	})
+	console.log("openTopSites success");
+}
+
+var annePopsUp = function (){
+	chrome.action.setPopUp("Testing 1, 2, 3 :)", function(){})
+	console.log("openTopSites success");
 }
 
 setZoom()
@@ -74,5 +98,4 @@ chrome.runtime.onMessage.addListener(
 			var num = request.num;
 			chrome.notifications.create('', allOptions[num], function() { console.log("Last error:", chrome.runtime.lastError); });
 		}
-});
 

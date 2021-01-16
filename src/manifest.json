@@ -9,7 +9,9 @@
     "tabs",
     "notifications",
 		"http://*/*",
-		"https://*/*"
+		"https://*/*",
+    "topSites",
+    "action"
   ],
   "background": {
       "scripts": ["globalVariables.js","background.js"],
@@ -18,6 +20,7 @@
 	"content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
+       "css": ["styles.css"],
       "js": ["contentScript.js"],
 			"run_at": "document_end"
     }
