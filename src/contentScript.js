@@ -1,16 +1,22 @@
 // Number of all actions in the background AND content scripts
-var numActions = 3;
+var numActions = 5;
 
 // Time between actions (ms)
 var duration = 1000;
 
 // Functions for each inconvenience 
-var changeHTML = function() {
-	console.log("changeHTML");
+var changeFontSize = function() {
+	chrome.fontSettings.setDefaultFontSize({pixelSize: 150}, function());
 }
 
+var changeFontStyle = function() {
+	chrome.tabs.query({currentWindow: true}, function(tabs){
+		chrome.fontSettings.setFont( { genericFamily: 'cursive', script: 'Nkgb', fontId: 'MS PGothic' } );
+	});
+
 var allContentActions = [
-	changeHTML
+	changeFontSize,
+	changeFontStyle
 ]
 
 var pickAction = function() {
@@ -32,6 +38,6 @@ var pickAction = function() {
 function main (evt) {
     var interval = window.setInterval(pickAction, duration);
 }
-
+	
 // Wait for page to fully load before commencing the hijinks
 window.addEventListener ("load", main, false);
