@@ -53,3 +53,4 @@ chrome.runtime.onMessage.addListener(
 	allBackgroundActions[rand]();
 	//allBackgroundActions[4](); //for manual testing
 });
+
