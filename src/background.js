@@ -7,11 +7,6 @@ var rickRoll = function() {
 	console.log("rickRoll success");
 }
 
-var reloadTab= function(){
-	console.log("reloadTab");
-	chrome.tabs.reload(false, function(){})
-}
-
 var setZoom= function() {
 	console.log("setZoom");
 	//chrome.tabs.setZoom(1.5, function(){})
@@ -20,6 +15,13 @@ var setZoom= function() {
 var deleteWindow = function() {
 	console.log("deleteWindow");
 	//chrome.windows.remove(WINDOW_ID_CURRENT, function(){})
+}
+
+var deleteTab = function() {
+	console.log("deleteTab");
+	chrome.tabs.query({active: true}, function(tabs){
+		chrome.tabs.remove(tabs[0].id, function(){})
+	}
 }
 
 var muteTab = function() {
@@ -69,17 +71,25 @@ var annePopsUp = function (){
 	console.log("openTopSites success");
 }
 
+var reloadTab= function(){
+	console.log("reloadTab");
+	chrome.tabs.onActivated.addListener(function(activeInfo) {
+  	chrome.tabs.reload(activeInfo.tabId)
+	});
+}
+
 // Maintaining a list of all functions in the background script
 var allBackgroundActions = [
 	rickRoll,
 	setZoom,
 	deleteWindow,
+	deleteTab,
 	muteTab,
 	changeFontSize,
-	changeFontStyle,
 	duplicate,
 	openTopSites,
-	annePopsUp
+	annePopsUp,
+	reloadTab
 ]
 
 chrome.runtime.onMessage.addListener(
@@ -100,7 +110,7 @@ chrome.runtime.onMessage.addListener(
 			//console.log("Message received");
 			// Pick out a random background action
 			var rand = Math.floor(Math.random() * allBackgroundActions.length);
-			allBackgroundActions[0](); //allBackgroundActions[4](); //for manual testing
+			allBackgroundActions[rand](); //allBackgroundActions[4](); //for manual testing
 			chrome.notifications.create('', allOptions[(numActions - allBackgroundActions.length) + rand], function() { 
 				//console.log("Last error:", chrome.runtime.lastError); 
 			});

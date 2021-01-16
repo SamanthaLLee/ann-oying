@@ -4,12 +4,6 @@ var numActions = 0;
 var duration = 10000;
 
 // Functions for each inconvenience 
-
-var changeColor = function() {
-	console.log("changeColor");
-	document.body.style.backgroundColor = "red";
-}
-
 var changeImages = function() {
 	var images = document.getElementsByTagName('img');
 	for (var i = 0, l = images.length; i < l; i++) {
@@ -18,14 +12,13 @@ var changeImages = function() {
 }
 
 var allContentActions = [
- 	changeColor,
 	changeImages
 ]
 
 var pickAction = function() {
 	// Pick out a random action
 	var rand = Math.floor(Math.random() * numActions);
-	rand = 1;
+	//rand = 12;
 	if(rand > allContentActions.length-1){
 		// If rand corresponds to an action in the background script, 
 		// we must send a message to the background script

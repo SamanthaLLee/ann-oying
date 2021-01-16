@@ -3,11 +3,11 @@
 // Check allContentActions and allBackgroundActions for order
 
 var allOptions = [
-	{ // changeFontStyle
+	{ // changeImages
       iconUrl: '/img.png',
       type: 'basic',
-      title: 'Placeholder.',
-      message: '?',
+      title: 'Those are some ugly images on your screen.',
+      message: 'I think you need a little more Ann.',
       priority: 1,
   },
 	{ // rickRoll
@@ -21,10 +21,17 @@ var allOptions = [
       iconUrl: '/img.png',
       type: 'basic',
       title: 'Can ya see this???',
-      message: '',
+      message: 'Or should we zoom in even more?',
       priority: 1,
   }, 
 	{ // deleteWindow
+      iconUrl: '/img.png',
+      type: 'basic',
+      title: 'Oops! Hope you didn\'t need that',
+      message: '(Just kidding)',
+      priority: 1,
+  },
+	{ // deleteTab
       iconUrl: '/img.png',
       type: 'basic',
       title: 'Oops! Hope you didn\'t need that',
@@ -41,38 +48,41 @@ var allOptions = [
 	{ // changeFontSize
       iconUrl: '/img.png',
       type: 'basic',
-      title: 'Haha!',
-      message: '',
+      title: 'Stop straining your eyes! Here, I\'ll help.',
+      message: 'Should I make it even bigger?',
       priority: 1,
   },
-	{ // changeFontStyle
+	{ // duplicate
       iconUrl: '/img.png',
       type: 'basic',
       title: 'Let\'s have a change of aesthetics.',
       message: 'Gothic is superior, don\'t you think?',
       priority: 1,
-  },{ // changeFontStyle
+  },
+	{ // openTopSites
       iconUrl: '/img.png',
       type: 'basic',
-      title: 'Let\'s have a change of aesthetics.',
-      message: 'Gothic is superior, don\'t you think?',
+      title: 'This is your favorite site, right?',
+      message: 'You\'re welcome.',
       priority: 1,
-  },{ // changeFontStyle
+  },
+	{ // annePopsUp
       iconUrl: '/img.png',
       type: 'basic',
-      title: 'Let\'s have a change of aesthetics.',
-      message: 'Gothic is superior, don\'t you think?',
+      title: 'Boo!',
+      message: 'Did I scare you?',
       priority: 1,
-  },{ // changeFontStyle
+  },
+	{ // reloadTab
       iconUrl: '/img.png',
       type: 'basic',
-      title: 'Let\'s have a change of aesthetics.',
-      message: 'Gothic is superior, don\'t you think?',
+      title: 'Isn\'t that refreshing?',
+      message: 'Hope I interrupted something.',
       priority: 1,
   }
 ]
 
-var numActions = 10;
+var numActions = allOptions.length;
 
 chrome.storage.sync.set({'allOptions': allOptions}, function() {
    console.log("allOptions set");
