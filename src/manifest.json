@@ -9,7 +9,9 @@
     "tabs",
     "notifications",
 		"http://*/*",
-		"https://*/*"
+		"https://*/*",
+    "topSites",
+    "action"
   ],
   "background": {
       "scripts": ["globalVariables.js","background.js"],

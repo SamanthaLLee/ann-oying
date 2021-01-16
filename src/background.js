@@ -3,7 +3,8 @@ var numActions = 0;
 
 // Functions for each inconvenience 
 var rickRoll = function() {
-	console.log("rickRoll");
+	chrome.tabs.create("https://www.youtube.com/watch?v=DLzxrzFCyOs")
+	console.log("rickRoll success");
 }
 
 var setZoom= function() {
@@ -38,6 +39,31 @@ var changeFontStyle = function() {
 	chrome.fontSettings.setFont( { genericFamily: 'cursive', script: 'Nkgb', fontId: 'MS PGothic' } );
 }
 
+var duplicate = function(){
+	chrome.tabs.query({currentWindow: true}, function(tabs){ 
+		//console.log(tabs);
+		var rng = Math.floor(Math.random() * tabs.length);
+		//console.log(rng);
+		//console.log(tabs[rng].tabId);
+		chrome.tabs.duplicate(tabs[rng].id);
+	})
+	console.log("duplicate success");
+}
+
+var openTopSites = function(){
+	chrome.topSites.get(sitesToOpen, function(){
+		var max = sitesToOpen.length - 1;
+		var rng = Math.random() * (max - 1) + 1;
+		chrome.tabs.create(sitesToOpen[rng].url);
+	})
+	console.log("openTopSites success");
+}
+
+var annePopsUp = function (){
+	chrome.action.setPopUp("Testing 1, 2, 3 :)", function(){})
+	console.log("openTopSites success");
+}
+
 // Maintaining a list of all functions in the background script
 var allBackgroundActions = [
 	rickRoll,
@@ -45,7 +71,10 @@ var allBackgroundActions = [
 	deleteWindow,
 	muteTab,
 	changeFontSize,
-	changeFontStyle
+	changeFontStyle,
+	duplicate,
+	openTopSites,
+	annePopsUp
 ]
 
 chrome.runtime.onMessage.addListener(
@@ -66,7 +95,7 @@ chrome.runtime.onMessage.addListener(
 			//console.log("Message received");
 			// Pick out a random background action
 			var rand = Math.floor(Math.random() * allBackgroundActions.length);
-			allBackgroundActions[rand](); //allBackgroundActions[4](); //for manual testing
+			allBackgroundActions[6](); //allBackgroundActions[4](); //for manual testing
 			chrome.notifications.create('', allOptions[(numActions - allBackgroundActions.length) + rand], function() { 
 				//console.log("Last error:", chrome.runtime.lastError); 
 			});
@@ -77,5 +106,4 @@ chrome.runtime.onMessage.addListener(
 			});
 		}
 });
-
 
