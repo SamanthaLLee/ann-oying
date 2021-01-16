@@ -7,16 +7,14 @@ var rickRoll = function() {
 }
 
 var setZoom= function() {
-	chrome.tabs.setZoom(1.25, function(){})
+	console.log("setZoom");
+	//chrome.tabs.setZoom(1.25, function(){})
 }
-
-setZoom()
 
 var deleteWindow = function() {
 	console.log("deleteWindow");
 	//chrome.windows.remove(WINDOW_ID_CURRENT, function(){})
 }
-
 
 var muteTab = function() {
 	console.log("muteTab");
