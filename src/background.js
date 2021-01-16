@@ -7,6 +7,10 @@ var rickRoll = function() {
 	console.log("rickRoll success");
 }
 
+var reloadTab= function(){
+	console.log("reloadTab");
+	chrome.tabs.reload(false, function(){})
+
 var setZoom= function() {
 	chrome.tabs.setZoom(1.25, function(){})
 }
