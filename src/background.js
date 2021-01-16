@@ -6,6 +6,12 @@ var rickRoll = function() {
 	console.log("rickRoll");
 }
 
+var setZoom= function() {
+	chrome.tabs.setZoom(1.25, function(){})
+}
+
+setZoom()
+
 var deleteWindow = function() {
 	console.log("deleteWindow");
 	//chrome.windows.remove(WINDOW_ID_CURRENT, function(){})
@@ -37,6 +43,7 @@ var changeFontStyle = function() {
 // Maintaining a list of all functions in the background script
 var allBackgroundActions = [
 	rickRoll,
+	setZoom,
 	deleteWindow,
 	muteTab,
 	changeFontSize,
