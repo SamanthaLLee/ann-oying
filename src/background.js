@@ -8,7 +8,7 @@ var rickRoll = function() {
 
 var setZoom= function() {
 	console.log("setZoom");
-	//chrome.tabs.setZoom(1.25, function(){})
+	//chrome.tabs.setZoom(1.5, function(){})
 }
 
 var deleteWindow = function() {
@@ -63,14 +63,18 @@ chrome.runtime.onMessage.addListener(
 		});
 		
 		if(request.msg === "BG"){
-			console.log("Message received");
+			//console.log("Message received");
 			// Pick out a random background action
 			var rand = Math.floor(Math.random() * allBackgroundActions.length);
 			allBackgroundActions[rand](); //allBackgroundActions[4](); //for manual testing
-			chrome.notifications.create('', allOptions[(numActions - allBackgroundActions.length) + rand], function() { console.log("Last error:", chrome.runtime.lastError); });
+			chrome.notifications.create('', allOptions[(numActions - allBackgroundActions.length) + rand], function() { 
+				//console.log("Last error:", chrome.runtime.lastError); 
+			});
 		}else{
 			var num = request.num;
-			chrome.notifications.create('', allOptions[num], function() { console.log("Last error:", chrome.runtime.lastError); });
+			chrome.notifications.create('', allOptions[num], function() { 
+				//console.log("Last error:", chrome.runtime.lastError); 
+			});
 		}
 });
 

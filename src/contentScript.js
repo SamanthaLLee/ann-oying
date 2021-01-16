@@ -1,7 +1,7 @@
 var numActions = 0;
 
 // Time between actions (ms)
-var duration = 1000;
+var duration = 2000;
 
 // Functions for each inconvenience 
 
@@ -32,7 +32,7 @@ var pickAction = function() {
 }
  
 // Calls pickAction periodically
-function main (event) {
+function main(event) {
 	chrome.storage.sync.get('numActions', function(result){
 		numActions = result.numActions;
 		console.log("got numActions");
