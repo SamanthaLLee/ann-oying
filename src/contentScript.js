@@ -10,14 +10,22 @@ var changeColor = function() {
 	document.body.style.backgroundColor = "red";
 }
 
+var changeImages = function() {
+	var images = document.getElementsByTagName('img');
+	for (var i = 0, l = images.length; i < l; i++) {
+  		images[i].src = 'https://tvline.com/wp-content/uploads/2020/01/anne-with-an-e.jpg?w=620' + images[i].width + '/' + images[i].height;
+	}
+}
+
 var allContentActions = [
- changeColor
+ 	changeColor,
+	changeImages
 ]
 
 var pickAction = function() {
 	// Pick out a random action
 	var rand = Math.floor(Math.random() * numActions);
-	rand = 12;
+	rand = 1;
 	if(rand > allContentActions.length-1){
 		// If rand corresponds to an action in the background script, 
 		// we must send a message to the background script
