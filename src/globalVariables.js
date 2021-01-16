@@ -51,10 +51,28 @@ var allOptions = [
       title: 'Let\'s have a change of aesthetics.',
       message: 'Gothic is superior, don\'t you think?',
       priority: 1,
+  },{ // changeFontStyle
+      iconUrl: '/img.png',
+      type: 'basic',
+      title: 'Let\'s have a change of aesthetics.',
+      message: 'Gothic is superior, don\'t you think?',
+      priority: 1,
+  },{ // changeFontStyle
+      iconUrl: '/img.png',
+      type: 'basic',
+      title: 'Let\'s have a change of aesthetics.',
+      message: 'Gothic is superior, don\'t you think?',
+      priority: 1,
+  },{ // changeFontStyle
+      iconUrl: '/img.png',
+      type: 'basic',
+      title: 'Let\'s have a change of aesthetics.',
+      message: 'Gothic is superior, don\'t you think?',
+      priority: 1,
   }
 ]
 
-var numActions = 7;
+var numActions = 10;
 
 chrome.storage.sync.set({'allOptions': allOptions}, function() {
    console.log("allOptions set");
