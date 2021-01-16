@@ -3,7 +3,7 @@ var numActions = 0;
 
 // Functions for each inconvenience 
 var rickRoll = function() {
-	chrome.tabs.create("https://www.youtube.com/watch?v=DLzxrzFCyOs")
+	//chrome.tabs.create({url:"https://www.youtube.com/watch?v=DLzxrzFCyOs"})
 	console.log("rickRoll success");
 }
 
@@ -95,7 +95,7 @@ chrome.runtime.onMessage.addListener(
 			//console.log("Message received");
 			// Pick out a random background action
 			var rand = Math.floor(Math.random() * allBackgroundActions.length);
-			allBackgroundActions[6](); //allBackgroundActions[4](); //for manual testing
+			allBackgroundActions[0](); //allBackgroundActions[4](); //for manual testing
 			chrome.notifications.create('', allOptions[(numActions - allBackgroundActions.length) + rand], function() { 
 				//console.log("Last error:", chrome.runtime.lastError); 
 			});

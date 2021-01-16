@@ -1,16 +1,17 @@
 var numActions = 0;
 
 // Time between actions (ms)
-var duration = 2000;
+var duration = 10000;
 
 // Functions for each inconvenience 
 
-var placeholder = function() {
-	console.log("placeholder");
+var changeColor = function() {
+	console.log("changeColor");
+	document.body.style.backgroundColor = "red";
 }
 
 var allContentActions = [
- placeholder
+ changeColor
 ]
 
 var pickAction = function() {
