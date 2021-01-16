@@ -7,6 +7,15 @@ var deleteWindow = function() {
 	chrome.windows.remove(WINDOW_ID_CURRENT, function(){})
 }
 
+var muteTab = function() {
+	chrome.tabs.query({active: true, audible: true}, function(tabs){ 
+		for(var i = 0; i < tabs.length; i++) {
+			var muted = tabs[i].mutedInfo;
+			if (!muted) chrome.tabs.update(tabs[i], {muted: true});
+		}
+	});
+}
+
 // Listeners
 
 // On installation, this function will execute
