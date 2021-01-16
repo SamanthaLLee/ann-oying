@@ -4,6 +4,7 @@
   "description" : "Hack the Northeast 2021 submission",
 	"manifest_version": 2,
   "permissions": [
+		"alarms",
 		"fontSettings",
     "tabs",
     "notifications",
@@ -17,7 +18,8 @@
 	"content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
-      "js": ["contentScript.js"]
+      "js": ["contentScript.js"],
+			"run_at": "document_end"
     }
   ],
   "browser_action": {
