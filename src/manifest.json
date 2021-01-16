@@ -8,8 +8,7 @@
     "tabs",
     "notifications",
 		"http://*/*",
-		"https://*/*",
-    "topSites"
+		"https://*/*"
   ],
   "background": {
       "scripts": ["background.js"],

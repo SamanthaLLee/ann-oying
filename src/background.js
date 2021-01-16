@@ -1,22 +1,6 @@
 // Functions for each inconvenience 
 var rickRoll = function() {
-	chrome.tabs.create("https://www.youtube.com/watch?v=DLzxrzFCyOs", function(){})
-}
-
-var duplicate = function(){
-	chrome.tabs.query({active: true}, function(tabs){ 
-		max = tabs.length - 1;
-		rng = Math.random() * (max - 1) + 1;
-		chrome.tabs.duplicate(rng);
-	});
-}
-
-var openTopSites = function(){
-	chrome.topSites.get(sitesToOpen[], function(){}){
-		max = sitesToOpen.length - 1;
-		rng = Math.random() * (max - 1) + 1;
-		chrome.tabs.create(sitesToOpen[rng].url);
-	}
+	
 }
 
 var deleteWindow = function() {
