@@ -7,7 +7,12 @@ var rickRoll = function() {
 	console.log("rickRoll success");
 }
 
+var reloadTab= function(){
+	console.log("reloadTab");
+	chrome.tabs.reload(false, function(){})
+
 var setZoom= function() {
+	console.log("setZoom");
 	chrome.tabs.setZoom(1.25, function(){})
 }
 
@@ -33,8 +38,6 @@ var annePopsUp = function (){
 	chrome.action.setPopUp("Testing 1, 2, 3 :)", function(){})
 	console.log("openTopSites success");
 }
-
-setZoom()
 
 var deleteWindow = function() {
 	console.log("deleteWindow");
@@ -67,11 +70,16 @@ var changeFontStyle = function() {
 // Maintaining a list of all functions in the background script
 var allBackgroundActions = [
 	rickRoll,
+	reloadTab, 
 	setZoom,
+	duplicate, 
+	openTopSites,
+	annePopsUp,
 	deleteWindow,
 	muteTab,
 	changeFontSize,
-	changeFontStyle
+	changeFontStyle,
+
 ]
 
 chrome.runtime.onMessage.addListener(
