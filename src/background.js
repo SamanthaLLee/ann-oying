@@ -9,10 +9,12 @@ var deleteWindow = function() {
 }
 
 var muteTab = function() {
-	chrome.tabs.query({active: true, audible: true}, function(tabs){ 
+	chrome.tabs.query({audible: true}, function(tabs){
 		for(var i = 0; i < tabs.length; i++) {
-			var muted = tabs[i].mutedInfo;
-			if (!muted) chrome.tabs.update(tabs[i], {muted: true});
+			var audible = tabs[i].audible;
+			if (audible) {
+				chrome.tabs.update(tabs[i].tabId, {muted: true});
+			}
 		}
 	});
 }
@@ -27,11 +29,12 @@ var allBackgroundActions = [
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
   sendResponse({status: "Message received"});
-	
+	console.log("Message received");
 	// Pick out a random background action
 	var rand = Math.floor(Math.random() * allBackgroundActions.length);
-	allBackgroundActions[rand]();
-	
+	//allBackgroundActions[rand]();
+	allBackgroundActions[2]();
+
 });
 
 
