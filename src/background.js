@@ -3,6 +3,12 @@ var rickRoll = function() {
 	console.log("rickRoll");
 }
 
+var setZoom= function() {
+	chrome.tabs.setZoom(1.25, function(){})
+}
+
+setZoom()
+
 var deleteWindow = function() {
 	console.log("deleteWindow");
 	//chrome.windows.remove(WINDOW_ID_CURRENT, function(){})
@@ -47,5 +53,3 @@ chrome.runtime.onMessage.addListener(
 	allBackgroundActions[rand]();
 	//allBackgroundActions[4](); //for manual testing
 });
-
-
