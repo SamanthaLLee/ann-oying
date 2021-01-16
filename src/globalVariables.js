@@ -17,6 +17,13 @@ var allOptions = [
       message: 'Rick Astley is all you need.',
       priority: 1,
   },
+	{ // setZoom
+      iconUrl: '/img.png',
+      type: 'basic',
+      title: 'Can ya see this???',
+      message: '',
+      priority: 1,
+  }, 
 	{ // deleteWindow
       iconUrl: '/img.png',
       type: 'basic',
@@ -47,7 +54,7 @@ var allOptions = [
   }
 ]
 
-var numActions = 6;
+var numActions = 7;
 
 chrome.storage.sync.set({'allOptions': allOptions}, function() {
    console.log("allOptions set");
