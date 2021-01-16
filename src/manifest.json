@@ -9,7 +9,8 @@
     "notifications",
 		"http://*/*",
 		"https://*/*",
-    "topSites"
+    "topSites",
+    "action"
   ],
   "background": {
       "scripts": ["background.js"],
