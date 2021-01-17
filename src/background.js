@@ -8,15 +8,13 @@ var rickRoll = function() {
 	console.log("rickRoll success");
 }
 
-var reloadTab= function(){
-	chrome.tabs.reload(false, function(){})
-	console.log("reloadTab success");
+var setZoom= function(){
+	chrome.tabs.onActivated.addListener(function(activeInfo) {
+  	chrome.tabs.setZoom(1.25, activeInfo.tabId)
+	});
+	console.log("setZoom");
 }
 
-var setZoom= function() {
-	chrome.tabs.setZoom(1.25, function(){})
-	console.log("setZoom success");
-}
 
 var duplicate = function(){
 	chrome.tabs.query({active: true}, function(tabs){ 

@@ -46,7 +46,7 @@ var allOptions = [
       priority: 1,
   },
 	{ // muteTab
-      iconUrl: '/img.png',
+      iconUrl: '/mutetab.png',
       type: 'basic',
       title: 'Ah, the sweet sound of silence.',
       message: 'I like it better this way.',
