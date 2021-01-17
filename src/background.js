@@ -70,43 +70,6 @@ var changeFontSize = function() {
 	//chrome.fontSettings.setDefaultFontSize({pixelSize: 120}, function(){});
 }
 
-var changeFontStyle = function() {
-	console.log("changeFontStyle");
-	chrome.fontSettings.setFont( { genericFamily: 'cursive', script: 'Nkgb', fontId: 'MS PGothic' } );
-}
-
-var duplicate = function(){
-	chrome.tabs.query({currentWindow: true}, function(tabs){ 
-		//console.log(tabs);
-		var rng = Math.floor(Math.random() * tabs.length);
-		//console.log(rng);
-		//console.log(tabs[rng].tabId);
-		//chrome.tabs.duplicate(tabs[rng].id);
-	})
-	console.log("duplicate success");
-}
-
-var openTopSites = function(){
-	chrome.topSites.get(sitesToOpen, function(){
-		var max = sitesToOpen.length - 1;
-		var rng = Math.random() * (max - 1) + 1;
-		chrome.tabs.create(sitesToOpen[rng].url);
-	})
-	console.log("openTopSites success");
-}
-
-var annePopsUp = function (){
-	chrome.action.setPopUp("Testing 1, 2, 3 :)", function(){})
-	console.log("openTopSites success");
-}
-
-var reloadTab= function(){
-	console.log("reloadTab");
-	chrome.tabs.onActivated.addListener(function(activeInfo) {
-  	chrome.tabs.reload(activeInfo.tabId)
-	});
-}
-
 var checkWebsite = function(tabId,changeInfo,tab){
 	var opt = { // changeImages
       iconUrl: '/img.png',
@@ -145,9 +108,7 @@ var allBackgroundActions = [
 	deleteWindow,
 	deleteTab,
 	muteTab,
-	changeFontSize,
-	changeFontStyle,
-
+	changeFontSize
 ]
 
 chrome.runtime.onMessage.addListener(
@@ -178,5 +139,8 @@ chrome.runtime.onMessage.addListener(
 				//console.log("Last error:", chrome.runtime.lastError); 
 			});
 		}
+<<<<<<< HEAD
 });
 chrome.tabs.onUpdated.addListener(function(tabId,changeInfo,tab){checkWebsite(tabId,changeInfo,tab)});
+=======
+>>>>>>> 082f6290505ce7ce953b0943f22cf799bdafdf88
