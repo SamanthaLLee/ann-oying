@@ -3,17 +3,18 @@ var numActions = 0;
 
 // Functions for each inconvenience 
 var rickRoll = function() {
-	chrome.tabs.create("https://www.youtube.com/watch?v=DLzxrzFCyOs")
+	//chrome.tabs.create({url:"https://www.youtube.com/watch?v=DLzxrzFCyOs"})
 	console.log("rickRoll success");
 }
 
 var reloadTab= function(){
-	console.log("reloadTab");
 	chrome.tabs.reload(false, function(){})
+	console.log("reloadTab success");
+}
 
 var setZoom= function() {
-	console.log("setZoom");
 	chrome.tabs.setZoom(1.25, function(){})
+	console.log("setZoom success");
 }
 
 var duplicate = function(){
@@ -44,6 +45,12 @@ var deleteWindow = function() {
 	//chrome.windows.remove(WINDOW_ID_CURRENT, function(){})
 }
 
+var deleteTab = function() {
+	console.log("deleteTab");
+	chrome.tabs.query({active: true}, function(tabs){
+		chrome.tabs.remove(tabs[0].id, function(){})
+	})
+}
 
 var muteTab = function() {
 	console.log("muteTab");
@@ -67,6 +74,38 @@ var changeFontStyle = function() {
 	chrome.fontSettings.setFont( { genericFamily: 'cursive', script: 'Nkgb', fontId: 'MS PGothic' } );
 }
 
+var duplicate = function(){
+	chrome.tabs.query({currentWindow: true}, function(tabs){ 
+		//console.log(tabs);
+		var rng = Math.floor(Math.random() * tabs.length);
+		//console.log(rng);
+		//console.log(tabs[rng].tabId);
+		//chrome.tabs.duplicate(tabs[rng].id);
+	})
+	console.log("duplicate success");
+}
+
+var openTopSites = function(){
+	chrome.topSites.get(sitesToOpen, function(){
+		var max = sitesToOpen.length - 1;
+		var rng = Math.random() * (max - 1) + 1;
+		chrome.tabs.create(sitesToOpen[rng].url);
+	})
+	console.log("openTopSites success");
+}
+
+var annePopsUp = function (){
+	chrome.action.setPopUp("Testing 1, 2, 3 :)", function(){})
+	console.log("openTopSites success");
+}
+
+var reloadTab= function(){
+	console.log("reloadTab");
+	chrome.tabs.onActivated.addListener(function(activeInfo) {
+  	chrome.tabs.reload(activeInfo.tabId)
+	});
+}
+
 // Maintaining a list of all functions in the background script
 var allBackgroundActions = [
 	rickRoll,
@@ -76,6 +115,7 @@ var allBackgroundActions = [
 	openTopSites,
 	annePopsUp,
 	deleteWindow,
+	deleteTab,
 	muteTab,
 	changeFontSize,
 	changeFontStyle,
@@ -97,13 +137,16 @@ chrome.runtime.onMessage.addListener(
 		});
 		
 		if(request.msg === "BG"){
-			console.log("Message received");
+			//console.log("Message received");
 			// Pick out a random background action
 			var rand = Math.floor(Math.random() * allBackgroundActions.length);
 			allBackgroundActions[rand](); //allBackgroundActions[4](); //for manual testing
-			chrome.notifications.create('', allOptions[(numActions - allBackgroundActions.length) + rand], function() { console.log("Last error:", chrome.runtime.lastError); });
+			chrome.notifications.create('', allOptions[(numActions - allBackgroundActions.length) + rand], function() { 
+				//console.log("Last error:", chrome.runtime.lastError); 
+			});
 		}else{
 			var num = request.num;
-			chrome.notifications.create('', allOptions[num], function() { console.log("Last error:", chrome.runtime.lastError); });
+			chrome.notifications.create('', allOptions[num], function() { 
+				//console.log("Last error:", chrome.runtime.lastError); 
+			});
 		}
-

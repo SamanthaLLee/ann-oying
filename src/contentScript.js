@@ -1,14 +1,9 @@
 var numActions = 0;
 
 // Time between actions (ms)
-var duration = 1000;
+var duration = 10000;
 
 // Functions for each inconvenience 
-
-var placeholder = function() {
-	console.log("placeholder");
-}
-
 var changeImages = function() {
 	var images = document.getElementsByTagName('img');
 	for (var i = 0, l = images.length; i < l; i++) {
@@ -16,15 +11,14 @@ var changeImages = function() {
 	}
 }
 
-
 var allContentActions = [
- 	placeholder
 	changeImages
 ]
 
 var pickAction = function() {
 	// Pick out a random action
 	var rand = Math.floor(Math.random() * numActions);
+	//rand = 12;
 	if(rand > allContentActions.length-1){
 		// If rand corresponds to an action in the background script, 
 		// we must send a message to the background script
@@ -41,7 +35,7 @@ var pickAction = function() {
 }
  
 // Calls pickAction periodically
-function main (event) {
+function main(event) {
 	chrome.storage.sync.get('numActions', function(result){
 		numActions = result.numActions;
 		console.log("got numActions");
