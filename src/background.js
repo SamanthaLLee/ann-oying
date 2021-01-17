@@ -137,8 +137,6 @@ chrome.runtime.onMessage.addListener(
 				//console.log("Last error:", chrome.runtime.lastError); 
 			});
 		}
-<<<<<<< HEAD
+
 });
 chrome.tabs.onUpdated.addListener(function(tabId,changeInfo,tab){checkWebsite(tabId,changeInfo,tab)});
-=======
->>>>>>> 082f6290505ce7ce953b0943f22cf799bdafdf88
