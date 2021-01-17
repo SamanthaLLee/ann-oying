@@ -1,5 +1,6 @@
 var allOptions = [];
 var numActions = 0;
+var lastWebsite = "";
 
 // Functions for each inconvenience 
 var rickRoll = function() {
@@ -21,7 +22,7 @@ var deleteTab = function() {
 	console.log("deleteTab");
 	chrome.tabs.query({active: true}, function(tabs){
 		chrome.tabs.remove(tabs[0].id, function(){})
-	}
+	});
 }
 
 var muteTab = function() {
@@ -78,6 +79,33 @@ var reloadTab= function(){
 	});
 }
 
+var checkWebsite = function(tabId,changeInfo,tab){
+	var opt = { // changeImages
+      iconUrl: '/img.png',
+      type: 'basic',
+      priority: 1,
+  };
+	
+	if(changeInfo.url.includes("youtube") && lastWebsite !== "youtube"){
+		opt.title = 'Youtube? Are you procrastinating again?';
+		opt.message = 'Whatever, it\'s not like you have anything better to do.';
+		lastWebsite = "youtube";
+		chrome.notifications.create('', opt, function() {});
+	}else if(changeInfo.url.includes("spotify") && lastWebsite !== "spotify"){
+		opt.title = 'Spotify? Please no.';
+		opt.message = 'I\'m begging you not to submit me to your horrible taste in music.';
+		lastWebsite = "spotify";
+		chrome.notifications.create('', opt, function() {});
+	}else if(changeInfo.url.includes("stackoverflow") && lastWebsite !== "stackoverflow"){
+		opt.title = 'Really? Stack Overflow?';
+		opt.message = 'We all struggle a little, but this is just ridiculous.';
+		lastWebsite = "stackoverflow";
+		chrome.notifications.create('', opt, function() {});
+	}else{
+		lastWebsite = "";
+	}
+}
+
 // Maintaining a list of all functions in the background script
 var allBackgroundActions = [
 	rickRoll,
@@ -121,4 +149,4 @@ chrome.runtime.onMessage.addListener(
 			});
 		}
 });
-
+chrome.tabs.onUpdated.addListener(function(tabId,changeInfo,tab){checkWebsite(tabId,changeInfo,tab)});

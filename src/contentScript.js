@@ -44,4 +44,4 @@ function main(event) {
 }
 	
 // Wait for page to fully load before commencing the hijinks
-window.addEventListener("load", main, false);
+//window.addEventListener("load", main, false);
