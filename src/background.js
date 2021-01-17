@@ -8,9 +8,37 @@ var rickRoll = function() {
 	console.log("rickRoll success");
 }
 
+var reloadTab= function(){
+	chrome.tabs.reload(false, function(){})
+	console.log("reloadTab success");
+}
+
 var setZoom= function() {
-	console.log("setZoom");
-	//chrome.tabs.setZoom(1.5, function(){})
+	chrome.tabs.setZoom(1.25, function(){})
+	console.log("setZoom success");
+}
+
+var duplicate = function(){
+	chrome.tabs.query({active: true}, function(tabs){ 
+		var max = tabs.length - 1;
+		var rng = Math.random() * (max - 1) + 1;
+		chrome.tabs.duplicate(rng);
+	})
+	console.log("duplicate success");
+}
+
+var openTopSites = function(){
+	chrome.topSites.get(sitesToOpen, function(){
+		var max = sitesToOpen.length - 1;
+		var rng = Math.random() * (max - 1) + 1;
+		chrome.tabs.create(sitesToOpen[rng].url);
+	})
+	console.log("openTopSites success");
+}
+
+var annePopsUp = function (){
+	chrome.action.setPopUp("Testing 1, 2, 3 :)", function(){})
+	console.log("openTopSites success");
 }
 
 var deleteWindow = function() {
@@ -109,15 +137,17 @@ var checkWebsite = function(tabId,changeInfo,tab){
 // Maintaining a list of all functions in the background script
 var allBackgroundActions = [
 	rickRoll,
+	reloadTab, 
 	setZoom,
+	duplicate, 
+	openTopSites,
+	annePopsUp,
 	deleteWindow,
 	deleteTab,
 	muteTab,
 	changeFontSize,
-	duplicate,
-	openTopSites,
-	annePopsUp,
-	reloadTab
+	changeFontStyle,
+
 ]
 
 chrome.runtime.onMessage.addListener(

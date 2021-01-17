@@ -17,7 +17,7 @@ var allOptions = [
       message: 'Rick Astley is all you need.',
       priority: 1,
   },
-	 { // reloadTab
+  { // reloadTab
     iconUrl: '/img.png',
     type: 'basic',
     title: 'Refreshing',
