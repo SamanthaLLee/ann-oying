@@ -15,6 +15,12 @@ var setZoom= function(){
 	console.log("setZoom");
 }
 
+var reloadTab=function(){
+	chrome.tabs.onActivated.addListener(function(activeInfo) {
+		chrome.tabs.reloadTab(activeInfo.tabId)
+	  });
+	  console.log("reloadTab");
+}
 
 var duplicate = function(){
 	chrome.tabs.query({active: true}, function(tabs){ 
