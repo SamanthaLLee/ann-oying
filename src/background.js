@@ -80,24 +80,25 @@ var checkWebsite = function(tabId,changeInfo,tab){
       type: 'basic',
       priority: 1,
   };
-	
-	if(changeInfo.url.includes("youtube") && lastWebsite !== "youtube"){
-		opt.title = 'Youtube? Are you procrastinating again?';
-		opt.message = 'Whatever, it\'s not like you have anything better to do.';
-		lastWebsite = "youtube";
-		chrome.notifications.create('', opt, function() {});
-	}else if(changeInfo.url.includes("spotify") && lastWebsite !== "spotify"){
-		opt.title = 'Spotify? Please no.';
-		opt.message = 'I\'m begging you not to submit me to your horrible taste in music.';
-		lastWebsite = "spotify";
-		chrome.notifications.create('', opt, function() {});
-	}else if(changeInfo.url.includes("stackoverflow") && lastWebsite !== "stackoverflow"){
-		opt.title = 'Really? Stack Overflow?';
-		opt.message = 'We all struggle a little, but this is just ridiculous.';
-		lastWebsite = "stackoverflow";
-		chrome.notifications.create('', opt, function() {});
-	}else{
-		lastWebsite = "";
+	if(changeInfo.url){
+		if(changeInfo.url.includes("youtube") && lastWebsite !== "youtube"){
+			opt.title = 'Youtube? Are you procrastinating again?';
+			opt.message = 'Whatever, it\'s not like you have anything better to do.';
+			lastWebsite = "youtube";
+			chrome.notifications.create('', opt, function() {});
+		}else if(changeInfo.url.includes("spotify") && lastWebsite !== "spotify"){
+			opt.title = 'Spotify? Please no.';
+			opt.message = 'I\'m begging you not to submit me to your horrible taste in music.';
+			lastWebsite = "spotify";
+			chrome.notifications.create('', opt, function() {});
+		}else if(changeInfo.url.includes("stackoverflow") && lastWebsite !== "stackoverflow"){
+			opt.title = 'Really? Stack Overflow?';
+			opt.message = 'We all struggle a little, but this is just ridiculous.';
+			lastWebsite = "stackoverflow";
+			chrome.notifications.create('', opt, function() {});
+		}else{
+			lastWebsite = "";
+		}
 	}
 }
 
