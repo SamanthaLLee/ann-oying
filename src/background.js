@@ -70,7 +70,7 @@ var changeFontSize = function() {
 
 var checkWebsite = function(tabId,changeInfo,tab){
 	var opt = { // changeImages
-      iconUrl: '/img.png',
+      iconUrl: './img/anne.jpg',
       type: 'basic',
       priority: 1,
   };

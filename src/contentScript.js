@@ -18,7 +18,6 @@ var allContentActions = [
 var pickAction = function() {
 	// Pick out a random action
 	var rand = Math.floor(Math.random() * numActions);
-	//rand = 12;
 	if(rand > allContentActions.length-1){
 		// If rand corresponds to an action in the background script, 
 		// we must send a message to the background script
