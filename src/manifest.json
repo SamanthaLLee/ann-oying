@@ -10,8 +10,7 @@
     "notifications",
 		"http://*/*",
 		"https://*/*",
-    "topSites",
-    "action"
+    "topSites"
   ],
   "background": {
       "scripts": ["globalVariables.js","background.js"],

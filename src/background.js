@@ -4,7 +4,7 @@ var lastWebsite = "";
 
 // Functions for each inconvenience 
 var rickRoll = function() {
-	//chrome.tabs.create({url:"https://www.youtube.com/watch?v=DLzxrzFCyOs"})
+	chrome.tabs.create({url:"https://www.youtube.com/watch?v=DLzxrzFCyOs"})
 	console.log("rickRoll success");
 }
 
@@ -14,7 +14,6 @@ var setZoom= function(){
 	});
 	console.log("setZoom");
 }
-
 
 var duplicate = function(){
 	chrome.tabs.query({active: true}, function(tabs){ 
